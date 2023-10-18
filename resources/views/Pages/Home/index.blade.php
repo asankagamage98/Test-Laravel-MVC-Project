@@ -1,13 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>home page</title>
-</head>
-<body>
-    <h1>
-        Asanka Gamage
-    </h1>
-</body>
-</html>
+
+@extends('Layouts.app')
+
+@section('content')
+
+    <div class="container ">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h1  class="page-title">my home </h1>
+            </div>
+
+        </div>
+    </div>
+
+@endsection
+
+@push('css')
+    <style>
+       .page-title {
+           padding-top: 10vh;
+           font-size:80px;
+           color:red;
+        }
+    </style>
+
+@endpush
+
