@@ -1,18 +1,49 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
+@extends('Layouts.app')
+@section('content')
 
-@include('Libraries.style')
 
-<body>
+<div class="container ">
+    <div class="row">
+        <div class="col-lg-12 text-center">
+            <h1  class="page-title"> Todo List page </h1>
+        </div>
 
-    @include('Libraries\script')
-    <h1>
-        Todo view page
-    </h1>
-</body>
-</html>
+        <div class="col-lg-12 mt-5">
+            <form action={{ route('toto.store') }} method="POST" enctype="multipart/form-data">   {{-- enctpe use for image upload --}}
+                 @csrf
+
+                <div class="row">
+                    <div class="form-group col-lg-12">
+                        <div class="mb-3">
+                            <label  class="form-label">Todo name</label>
+                            <input type="text" class="form-control" name="name"  placeholder="enter name">
+                        </div>
+                        <div class="mb-3">
+                            <label  class="form-label">Todo price</label>
+                            <input type="text" class="form-control" name="price"  placeholder="enter price">
+                        </div>
+
+
+                        <button type="submit" class="btn btn-primary">Submit</button>
+
+                   </div>
+
+           </form>
+
+
+        </div>
+    </div>
+</div>
+
+
+@endsection
+
+@push('css')
+    <style>
+        .page-title{
+            margin-top: 10vh;
+            font-size:40px;
+            color: blue
+        }
+    </style>
+@endpush

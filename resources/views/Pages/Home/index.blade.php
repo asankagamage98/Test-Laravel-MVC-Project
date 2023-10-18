@@ -6,7 +6,7 @@
     <div class="container ">
         <div class="row">
             <div class="col-lg-12 text-center">
-                <h1  class="page-title">my home </h1>
+                <h1  class="page-title"> home page </h1>
             </div>
 
         </div>

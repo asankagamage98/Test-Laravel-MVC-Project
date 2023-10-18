@@ -21,5 +21,12 @@ Route::get('/', function () {
 
 //home
 Route::get('/',[HomeController::class,'index'])->name('Home');
+
+
 //todo
-Route::get('/todo',[TodoController::class,'index'])->name('Todo');
+
+Route::prefix('/todo')->group(function(){
+    Route::get('/',[TodoController::class,'index'])->name('Todo');
+    Route::post('/store',[TodoController::class,'store'])->name('toto.store');
+
+});
