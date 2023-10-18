@@ -8,9 +8,7 @@ use Illuminate\Support\Facades\Log;  //check logs
 
 class TodoController extends Controller
 {
-    public function index(){
-        return view('Pages.Todo.index');
-    }
+
 
     public function store(Request $request){
 
@@ -19,15 +17,16 @@ class TodoController extends Controller
             'price' =>'required|string'
         ]);
 
-        $user = todo::create($record)->all();
-        Log::info($user);
+        $task = todo::create($record)->all();
+        Log::info($task);
 
         return redirect()->back();
         // return redirect()->back(route('Todo'));  can use both code
     }
 
     public function getAll(){
-        return todo::all();
+        $tasks = todo::all();
+        return view('Pages.Todo.index')->with('tasks', $tasks);
     }
 
     public function getById(Request $request, string $id){
@@ -45,8 +44,13 @@ class TodoController extends Controller
         return todo::where('name','like','%'.$name.'%')->get();
     }
 
-    public function delete(string $id){
-        $data = todo::destroy($id);
-        return todo::all();
+    public function delete($id){
+          todo::destroy($id);
+        // return todo::all();
+
+        //  $data =todo::find($id);
+        //  $data->delete();
+
+        return redirect()->back();
     }
 }
