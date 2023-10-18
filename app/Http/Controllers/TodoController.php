@@ -29,15 +29,15 @@ class TodoController extends Controller
         return view('Pages.Todo.index')->with('tasks', $tasks);
     }
 
-    public function getById(Request $request, string $id){
+    public function getById(string $id){
        return todo::find($id);
     }
 
     public function update(Request $request , string $id){
         $user = todo::find( $id);
-        $user->update( $request->all());
+        $tasks = $user->update( $request->all());
 
-        return $user;
+        return view('Pages.Todo.edit')->with('tasks', $tasks);
     }
 
     public function search(string $name){

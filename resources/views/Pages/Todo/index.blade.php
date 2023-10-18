@@ -27,6 +27,10 @@
                         <button type="submit" class="btn btn-primary">Submit</button>
 
                    </div>
+                </div>
+
+            </form>
+
 
                    <div class="col-lg-12">
                         <div>
@@ -54,7 +58,14 @@
                                                 @endif
                                             </td>
                                             <td>
-                                                <a href="{{ route('todo.delete',$task->id) }}"><i class="fa-solid fa-trash-can"></i></a>
+                                                <a href="{{ route('todo.delete',$task->id) }}" ><i class="fa-solid fa-trash-can" style="color: #e01010;"></i></a>
+                                                <a href=""><i class="fa-sharp fa-solid fa-circle-check" style="color: #10d541;"></i></a>
+                                                <a href="javascript:void(0)"  >
+                                                    <i class="fa-solid fa-pen-to-square " style="color: #020203;"
+                                                    data-bs-toggle="modal" data-bs-target="#editTodo" onclick="todoModal({{ $task->id }})"></i>
+                                                </a>
+
+
                                             </td>
 
                                         </tr>
@@ -62,17 +73,58 @@
                                 </tbody>
                               </table>
                         </div>
-                   </div>
-
-           </form>
 
 
-        </div>
+
+                    </div>
+       </div>
     </div>
 </div>
 
 
+{{-- modal use for update --}}
+
+<!-- Modal -->
+<div class="modal fade" id="editTodo" tabindex="-1" aria-labelledby="editTodoLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="editTodoLabel">Update Todo..</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body" id="todoEditContent">
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
 @endsection
+
+
+{{-- ---------------------------------------------------------- --}}
+@push('js')
+  <script>
+    function todoModal(task_id){
+        val data = {
+            task_id: task_id,
+        };
+        $.ajax({
+            url: "{{ 'route(todo.edit') }}",
+            headers:{
+                'X-CSRF-TOKEN':
+            }
+        })
+    }
+  </script>
+@endpush
+
+{{-- --------------------------------------------------------- --}}
 
 @push('css')
     <style>
