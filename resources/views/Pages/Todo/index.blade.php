@@ -2,6 +2,9 @@
 @section('content')
 
 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
 <div class="container ">
     <div class="row">
         <div class="col-lg-12 text-center">
@@ -60,10 +63,13 @@
                                             <td>
                                                 <a href="{{ route('todo.delete',$task->id) }}" ><i class="fa-solid fa-trash-can" style="color: #e01010;"></i></a>
                                                 <a href=""><i class="fa-sharp fa-solid fa-circle-check" style="color: #10d541;"></i></a>
-                                                <a href="javascript:void(0)"  >
-                                                    <i class="fa-solid fa-pen-to-square " style="color: #020203;"
-                                                    data-bs-toggle="modal" data-bs-target="#editTodo" onclick="todoModal({{ $task->id }})"></i>
-                                                </a>
+                                                <a href="javascript:void(0)"
+                                                        data-bs-toggle="modal"
+                                                        data-bs-target="#editTodo"
+                                                        onclick="todoModal({{ $task->id }})">
+                                                        <i class="fa-solid fa-pen-to-square" style="color: #020203;"></i>
+                                               </a>
+
 
 
                                             </td>
@@ -95,13 +101,10 @@
         <div class="modal-body" id="todoEditContent">
 
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
       </div>
     </div>
   </div>
+
 
 
 @endsection
@@ -109,19 +112,30 @@
 
 {{-- ---------------------------------------------------------- --}}
 @push('js')
-  <script>
-    function todoModal(task_id){
-        val data = {
-            task_id: task_id,
+<script>
+    function todoModal(id){
+        var data = {
+            'id': id,
         };
         $.ajax({
-            url: "{{ 'route(todo.edit') }}",
-            headers:{
-                'X-CSRF-TOKEN':
+            url: "{{ route('todo.getUpdate') }}",
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            type: 'GET',
+            dataType: 'html',
+            data: data,
+            success: function(response){
+                console.log(response);
+                $('#editTodo').modal('show');
+                $('#todoEditContent').html(response);
+            },
+            error: function(error) {
+                console.error(error);
             }
-        })
+        });
     }
-  </script>
+</script>
 @endpush
 
 {{-- --------------------------------------------------------- --}}

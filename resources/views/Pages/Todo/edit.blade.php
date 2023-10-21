@@ -1,7 +1,7 @@
 
 
 
-<form action={{ route('todo.update',$tasks->id ) }} method="POST" enctype="multipart/form-data">   {{-- enctpe use for image upload --}}
+<form action={{ route('todo.update', $tasks->id ) }} method="POST" enctype="multipart/form-data">   {{-- enctpe use for image upload --}}
     @csrf
 
    <div class="row">
