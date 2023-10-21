@@ -34,5 +34,5 @@ Route::prefix('/todo')->group(function(){
 
 
     Route::get('/editDetials',[TodoController::class,'getDetailUpdate'])->name('todo.getUpdate');
-    Route::put('/update/{id}',[TodoController::class,'update'])->name('todo.update');
+    Route::post('/update/{id}',[TodoController::class,'update'])->name('todo.update');
 });

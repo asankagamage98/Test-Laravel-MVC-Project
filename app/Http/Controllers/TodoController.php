@@ -36,15 +36,17 @@ class TodoController extends Controller
 
 
     public function getDetailUpdate(Request $request){
-        $response['tasks'] = todo::find($request['id']);
-        return view('Pages.Todo.edit')->with($response);
+        $tasks = todo::find($request['id']);
+        return view('Pages.Todo.edit')->with('tasks', $tasks); // data pass fr edit page
     }
 
     public function update(Request $request , string $id){
         $user = todo::find( $id);
         $tasks = $user->update( $request->all());
 
-        return view('Pages.Home.index');
+        // return view('Pages.Todo.index');
+
+        return redirect()->back();
     }
 
     public function search(string $name){
