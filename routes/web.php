@@ -3,22 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\TodoController;
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
-
-Route::get('/', function () {
-    return view('welcome');
-});
-
+use App\Http\Controllers\SubTaskController;
 //home
 Route::get('/',[HomeController::class,'index'])->name('Home');
 
@@ -35,4 +20,7 @@ Route::prefix('/todo')->group(function(){
     //nomal routers
     Route::get('/editDetials',[TodoController::class,'getDetailUpdate'])->name('todo.getUpdate');
     Route::get('/sub/{id}',[TodoController::class,'sub'])->name('todo.sub');
+
+    //subtask
+    Route::post('subTask/store', [SubTaskController::class,'store'])->name('todo.sub.store');
 });
