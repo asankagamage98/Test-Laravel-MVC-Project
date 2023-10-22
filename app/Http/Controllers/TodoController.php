@@ -35,17 +35,10 @@ class TodoController extends Controller
     }
 
 
-    public function getDetailUpdate(Request $request){
-        $tasks = todo::find($request['id']);
-        return view('Pages.Todo.edit')->with('tasks', $tasks); // data pass fr edit page
-    }
 
     public function update(Request $request , string $id){
         $user = todo::find( $id);
         $tasks = $user->update( $request->all());
-
-        // return view('Pages.Todo.index');
-
         return redirect()->back();
     }
 
@@ -62,4 +55,18 @@ class TodoController extends Controller
 
         return redirect()->back();
     }
+
+
+    //page route and pass data for pages
+
+    public function getDetailUpdate(Request $request){
+        $tasks = todo::find($request['id']);
+        return view('Pages.Todo.edit')->with('tasks', $tasks); // data pass for Pages.Todo.editt page
+    }
+
+    public function sub($id){
+        $tasks = todo::find($id);
+        return view('Pages.Todo.sub')->with('tasks', $tasks); //// data pass for Pages.Todo.sub page
+    }
+
 }

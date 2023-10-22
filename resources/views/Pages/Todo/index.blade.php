@@ -62,13 +62,15 @@
                                             </td>
                                             <td>
                                                 <a href="{{ route('todo.delete',$task->id) }}" ><i class="fa-solid fa-trash-can" style="color: #e01010;"></i></a>
-                                                <a href=""><i class="fa-sharp fa-solid fa-circle-check" style="color: #10d541;"></i></a>
+                                                <a href=""><i class="ms-2 fa-sharp fa-solid fa-circle-check" style="color: #10d541;"></i></a>
                                                 <a href="javascript:void(0)"
                                                         data-bs-toggle="modal"
                                                         data-bs-target="#editTodo"
                                                         onclick="todoModal({{ $task->id }})">
-                                                        <i class="fa-solid fa-pen-to-square" style="color: #020203;"></i>
+                                                        <i class="ms-2 fa-solid fa-pen-to-square" style="color: #020203;"></i>
                                                </a>
+                                               <a href="{{ route('todo.sub',$task->id) }}"><i class=" ms-2 fa-sharp fa-solid fa-person-walking" style="color: #fa9200;"></i></a>
+
 
 
 

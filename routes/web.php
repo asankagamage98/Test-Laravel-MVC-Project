@@ -30,9 +30,9 @@ Route::prefix('/todo')->group(function(){
     Route::post('/store',[TodoController::class,'store'])->name('todo.store');
     Route::get('/delete/{id}',[TodoController::class,'delete'])->name('todo.delete');
     Route::get('/getOne/{id}',[TodoController::class,'getById'])->name('todo.getbyId');
-
-
-
-    Route::get('/editDetials',[TodoController::class,'getDetailUpdate'])->name('todo.getUpdate');
     Route::post('/update/{id}',[TodoController::class,'update'])->name('todo.update');
+
+    //nomal routers
+    Route::get('/editDetials',[TodoController::class,'getDetailUpdate'])->name('todo.getUpdate');
+    Route::get('/sub/{id}',[TodoController::class,'sub'])->name('todo.sub');
 });
