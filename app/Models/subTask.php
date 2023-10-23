@@ -14,6 +14,7 @@ class subTask extends Model
         'phone',
         'priority',
         'note',
-        'date'
+        'date',
+        'task_id' //new add colom using foreignkey
     ];
 }

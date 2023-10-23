@@ -7,7 +7,7 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href={{ route('Todo') }}>Todo List</a>  {{-- called web api route --}}
+            <a class="nav-link active" aria-current="page" href={{ route('todo') }}>Todo List</a>  {{-- called web api route --}}
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Link</a>

@@ -2,9 +2,6 @@
 @section('content')
 
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-
 <div class="container ">
     <div class="row">
         <div class="col-lg-12 text-center mb-5">
@@ -68,6 +65,7 @@
                                     </div>
                                 </div>
                            </div>
+                               <input type="hidden" name="task_id" value="{{ $tasks->id }}">
                                <button type="submit" class="btn btn-primary  mt-2 ">Submit</button>
                           </div>
                        </div>
@@ -82,18 +80,28 @@
                         <div>
                             <table class="table table-striped">
                                 <thead>
-                                  <tr>
-                                    <th scope="col">#</th>
-                                    <th scope="col">name</th>
-                                    <th scope="col">price</th>
-                                    <th scope="col">done</th>
-                                    <th scope="col">Action</th>
-                                  </tr>
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">sub title</th>
+                                        <th scope="col">phone num</th>
+                                        <th scope="col">priority</th>
+                                        <th scope="col">note</th>
+                                        <th scope="col">task id</th>
+                                    </tr>
                                 </thead>
                                 <tbody>
-
+                                    @foreach($subtasks as $subtask)
+                                        <tr>
+                                            <td>{{ $subtask->id }}</td>
+                                            <td>{{ $subtask->sub_title }}</td>
+                                            <td>{{ $subtask->phone }}</td>
+                                            <td>{{ $subtask->priority }}</td>
+                                            <td>{{ $subtask->note }}</td>
+                                            <td>{{ $subtask->task_id }}</td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
-                              </table>
+                            </table>
                         </div>
 
 
@@ -102,7 +110,6 @@
        </div>
     </div>
 </div>
-
 
 {{-- modal use for update --}}
 

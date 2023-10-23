@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\todo;
+use App\Models\subTask;
+
 use Illuminate\Support\Facades\Log;  //check logs
 
 class TodoController extends Controller
@@ -18,7 +20,6 @@ class TodoController extends Controller
         ]);
 
         $task = todo::create($record)->all();
-        Log::info($task);
 
         return redirect()->back();
         // return redirect()->back(route('Todo'));  can use both code
@@ -66,7 +67,11 @@ class TodoController extends Controller
 
     public function sub($id){
         $tasks = todo::find($id);
-        return view('Pages.Todo.sub')->with('tasks', $tasks); //// data pass for Pages.Todo.sub page
+        $subtasks = subTask::latest()->get();
+        return view('Pages.Todo.sub',compact('tasks','subtasks'));//// data pass for Pages.Todo.sub page
+
     }
+
+
 
 }
