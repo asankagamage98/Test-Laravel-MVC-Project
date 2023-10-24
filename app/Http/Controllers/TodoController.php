@@ -68,7 +68,7 @@ class TodoController extends Controller
     public function sub($id){
         $tasks = todo::find($id);
         $subtasks = subTask::latest()->get();
-        return view('Pages.Todo.sub',compact('tasks','subtasks'));//// data pass for Pages.Todo.sub page
+        return view('Pages.Todo.sub',compact('tasks','subtasks'));// data pass for Pages.Todo.sub page
 
     }
 

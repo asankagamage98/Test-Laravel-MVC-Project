@@ -4,12 +4,11 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\TodoController;
 use App\Http\Controllers\SubTaskController;
+use App\Http\Controllers\TestController;
 //home
 Route::get('/',[HomeController::class,'index'])->name('Home');
 
-
 //todo
-
 Route::prefix('/todo')->group(function(){
     Route::get('/',[TodoController::class,'getAll'])->name('todo');
     Route::post('/store',[TodoController::class,'store'])->name('todo.store');
@@ -24,5 +23,15 @@ Route::prefix('/todo')->group(function(){
     //subtask
 
     Route::post('subTask/store', [SubTaskController::class,'store'])->name('todo.sub.store');
+
+
+
+});
+
+Route::prefix('/testall')->group(function(){
+
+    Route::get('/',[TestController::class,'index'])->name('todo');
+    Route::post('/test',[TestController::class,'store'])->name('test');
+
 
 });
